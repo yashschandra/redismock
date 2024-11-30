@@ -1035,6 +1035,13 @@ func (m *mock) ExpectHExists(key, field string) *ExpectedBool {
 	return e
 }
 
+func (m *mock) ExpectHExpire(key string, expiration time.Duration, fields ...string) *ExpectedIntSlice {
+	e := &ExpectedIntSlice{}
+	e.cmd = m.factory.HExpire(m.ctx, key, expiration, fields...)
+	m.pushExpect(e)
+	return e
+}
+
 func (m *mock) ExpectHGet(key, field string) *ExpectedString {
 	e := &ExpectedString{}
 	e.cmd = m.factory.HGet(m.ctx, key, field)

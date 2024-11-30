@@ -116,6 +116,7 @@ type baseMock interface {
 
 	ExpectHDel(key string, fields ...string) *ExpectedInt
 	ExpectHExists(key, field string) *ExpectedBool
+	ExpectHExpire(key string, expiration time.Duration, fields ...string) *ExpectedIntSlice
 	ExpectHGet(key, field string) *ExpectedString
 	ExpectHGetAll(key string) *ExpectedMapStringString
 	ExpectHIncrBy(key, field string, incr int64) *ExpectedInt
